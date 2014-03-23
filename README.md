@@ -19,6 +19,8 @@ Then add composer cartridge to your app via `rhc` cli or web console.
 
 ## Markers
 
+| marker | control |
+|--------|---------|
 | `composer_off` | skipping `composer install` when build |
 | `force_clean_build` | clean vendors but not cache |
 
