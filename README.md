@@ -13,6 +13,7 @@ rhc add-cartridge http://cartreflect-claytondev.rhcloud.com/reflect?github=twtst
 ```
 curl -L https://github.com/twtstudio/openshift-composer/archive/master.tar.gz | tar zxv
 oo-admin-cartridge -d -a install -s ./openshift-composer-master/ --mco
+oo-admin-broker-cache --console 
 ```
 
 Then add composer cartridge to your app via `rhc` cli or web console.

@@ -10,10 +10,14 @@ function status() {
 function start() {
     pushd "$OPENSHIFT_REPO_DIR" > /dev/null
     if force_clean_build_enabled_for_latest_deployment; then
-        find ~/.vendor/ -mindepth 1 -delete
+        find "$OPENSHIFT_HOMEDIR"/.vendor/ -mindepth 1 -delete
     fi
     [ -f "composer.json" ] || return 0;
-    [ -e "vendor" ] || ln -sf ~/.vendor ./vendor
+    if [ -d "vendor" ]; then
+        rsync -ap vendor/ "$OPENSHIFT_HOMEDIR"/.vendor/
+        rm -rf vendor
+    fi
+    ln -sf ~/.vendor ./vendor
     _composer_off_enabled_ || composer install
     popd > /dev/null
 }
