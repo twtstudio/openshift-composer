@@ -1,3 +1,5 @@
 #!/bin/bash -e
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
 curl -sS https://getcomposer.org/installer | php -- --install-dir="$OPENSHIFT_COMPOSER_DIR"/versions/shared/bin --filename=composer
 client_result `composer --version`
