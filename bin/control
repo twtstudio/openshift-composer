@@ -1,0 +1,28 @@
+#!/bin/bash -e
+
+function status() {
+    client_result `composer --version`
+}
+
+function start() {
+    pushd "$OPENSHIFT_REPO_DIR" > /dev/null
+    if force_clean_build_enabled_for_latest_deployment; then
+        find ~/.vendor/ -mindepth 1 -delete
+    fi
+    [ -f "composer.json" ] || return 0;
+    [ -e "vendor" ] || ln -sf ~/.vendor ./vendor
+    _composer_off_enabled_ || composer install
+    popd > /dev/null
+}
+
+function _composer_off_enabled_() {
+    test -e "$OPENSHIFT_REPO_DIR/.openshift/markers/composer_off" > /dev/null 2>&1
+}
+
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+case "$1" in
+    start)           start  ;;
+    status)          status ;;
+    *) exit 0;
+esac

@@ -1,0 +1,19 @@
+Name: composer
+Cartridge-Short-Name: COMPOSER
+Display-Name: Composer
+Description: "Composer is a tool for dependency management in PHP. It allows you to declare the dependent libraries your project needs and it will install them in your project for you."
+Version: "1.0.0"
+Website: https://github.com/twtstudio/openshift-composer
+Cartridge-Version: 0.0.1
+Cartridge-Vendor: twtstudio
+Categories:
+  - service
+  - php
+  - plugin
+  - embedded
+Provides:
+  - composer
+  - composer-1.0.0
+Scaling:
+  Min: 1
+  Max: -1

@@ -1,0 +1,4 @@
+#!/bin/bash -e
+pushd $OPENSHIFT_COMPOSER_DIR > /dev/null
+mkdir -p versions/shared/bin
+popd > /dev/null
